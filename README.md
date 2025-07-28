@@ -56,46 +56,33 @@ XUGOU 采用现代化的系统架构，包含以下组件：
 
 默认用户名：admin 默认密码: admin123
 
-[XUGOU wiki 部署指南](https://github.com/zaunist/xugou/wiki)
+准备数据库
+Dashboard 操作
 
-### 视频教程
+    登录到 Cloudflare
 
-[![XUGOU 视频教程](https://img.youtube.com/vi/jisEpcqDego/0.jpg)](https://youtu.be/w2by-7jDCM0)
+访问左侧菜单栏 存储和数据库 -> D1 SQL 数据库，创建一个数据库，并且记住数据库 ID 和 数据库 name
 
-### workers 优选教程
+d1
+部署后端服务
+Dashboard 操作
 
-[![workers 优选教程](https://img.youtube.com/vi/pF05vhNe_5A/0.jpg)](https://youtu.be/pF05vhNe_5A?si=FoLk94K2V5Wpg3jr)
+手动 fork，不要使用 cloudflare 的 "通过 Git URL 克隆存储库"
 
-## 常见问题
+1、fork 仓库 https://github.com/zaunist/xugou
 
-[XUGOU wiki 常见问题](https://github.com/zaunist/xugou/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
+2、修改仓库根目录的 wrangler.toml 文件中的数据库ID，改成前面保存的ID
+3、 访问 cloudflare 的 Workers 和 Pages，创建一个 worker，并在导入存储库位置选择刚才 fork 的 xugou 仓库。
 
-## ⭐ 支持一下作者
+workers 构建命令：pnpm run build
 
-- 给项目点个 Star，分享给您的朋友
-- Gitfish: [Gitfish 赞助页面](https://www.gitfish.dev/repo/zaunist/xugou)
-- 请作者喝点
+4、保持根目录设置（不需要修改路径），直接点击 保存并部署
 
-<div align="center">
-  <a href="https://buymeacoffee.com/real_zaunist" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200" height="51">
-  </a>
-      <a href="https://buymeacoke.realyourdad.workers.dev/" target="_blank">
-      <img src="https://img.shields.io/badge/Buy_Me_A_Coke-FF5E5B?style=for-the-badge&logo=coca-cola&logoColor=white" alt="Buy Me A Coke" width="200" height="51" style="border-radius: 8px;" />
-    </a>
+    注意：现在前后端已经集成在一个 Worker 中，不需要单独部署 Pages。Worker 会自动处理前端静态文件的服务。
 
 
-</div>
 
-## 🤝 贡献
 
-欢迎所有形式的贡献，无论是新功能、bug 修复还是文档改进。
-
-## 🏢 赞助
-
-感谢以下赞助商支持 XUGOU 的开发：
-
-[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
 
 ## 📄 开源协议
 
